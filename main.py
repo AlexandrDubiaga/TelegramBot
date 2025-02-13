@@ -6,11 +6,11 @@ import webbrowser
 bot = telebot.TeleBot('7563020591:AAF2dRoBBgGtzOHLKvOYRbQd0bn5AcCkqU0')
 
 buttonForProfessional = types.InlineKeyboardMarkup()  # создаём кнопку
-button1 = types.InlineKeyboardButton("Фахівець", url='https://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
+button1 = types.InlineKeyboardButton("Фахівець", url='http://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
 buttonForProfessional.add(button1)  # добавляем кнопку
 
 buttonForPrice = types.InlineKeyboardMarkup()  # создаём кнопку
-button2 = types.InlineKeyboardButton("Переглянути ціни тут!", url='https://expert.mmbti.com.ua/price/')  # добавляем текст кнопки и ссылку
+button2 = types.InlineKeyboardButton("Переглянути ціни тут!", url='http://expert.mmbti.com.ua/price/')  # добавляем текст кнопки и ссылку
 buttonForPrice.add(button2)  # добавляем кнопку
 
 
@@ -45,12 +45,12 @@ def text_message(message):
                                                                    f'Головний бухгалтер: +380512471506\n'
                                                                    f'Відділ прийому громадян:+380512470967\n'
                                                                    f'Стіл замовлень: +380512722132\n'
-                                                                   f'Сайт: https://expert.mmbti.com.ua/contact/\n\n ',reply_markup=markup)
+                                                                   f'Сайт: http://expert.mmbti.com.ua/contact/\n\n ',reply_markup=markup)
 
     elif message.text == 'Послуги':bot.send_message(message.chat.id,f'- ТЕХНІЧНА ІНВЕНТАРИЗАЦІЯ НЕРУХОМОГО МАЙНА\n\n'
                                                                    f'- ОЦІНКА РУХОМОГО ТА НЕРУХОМОГО МАЙНА\n\n'
                                                                    f'- ТЕХНІЧНЕ ОБСТЕЖЕННЯ БУДІВЕЛЬ ТА СПОРУД\n\n'
-                                                                    f'Детальніше переходь на наш Сайт, за посиланням:\n\n https://expert.mmbti.com.ua/\n\n',reply_markup=markup)
+                                                                    f'Детальніше переходь на наш Сайт, за посиланням:\n\n http://expert.mmbti.com.ua/\n\n',reply_markup=markup)
 
 
     elif message.text == 'Ціни': bot.send_message(message.chat.id, "Ціни на послуги", reply_markup=buttonForPrice)
@@ -68,7 +68,7 @@ def text_message(message):
                 f"Місто Миколаїв, вулиця Шевченка, 40, 54000\n\n"
             f"Адреса підрозділу, що обслуговує об’єкти у Корабельному районі:\n\n"
             f"м. Миколаїв, проспект Богоявленський, 314\n\n"
-            f'Детальніше переходь на наш Сайт, за посиланням:\n\n https://expert.mmbti.com.ua/adress/\n\n', reply_markup=markup)
+            f'Детальніше переходь на наш Сайт, за посиланням:\n\n http://expert.mmbti.com.ua/adress/\n\n', reply_markup=markup)
 
     elif (message.text == 'Привіт' or message.text == 'Добрий день' or message.text == 'Здравствуйте' or message.text == 'Добрый день' or message.text == 'Вітаю')  :bot.send_message(message.chat.id,
 
