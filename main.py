@@ -6,7 +6,7 @@ import webbrowser
 bot = telebot.TeleBot('7563020591:AAF2dRoBBgGtzOHLKvOYRbQd0bn5AcCkqU0')
 
 buttonForProfessional = types.InlineKeyboardMarkup()  # создаём кнопку
-button1 = types.InlineKeyboardButton("Фахівець", url='http://t.me/Elena_parnak/')  # добавляем текст кнопки и ссылку
+button1 = types.InlineKeyboardButton("Фахівець", url='http://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
 buttonForProfessional.add(button1)  # добавляем кнопку
 
 buttonForPrice = types.InlineKeyboardMarkup()  # создаём кнопку
