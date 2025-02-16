@@ -6,26 +6,33 @@ import webbrowser
 bot = telebot.TeleBot('7563020591:AAF2dRoBBgGtzOHLKvOYRbQd0bn5AcCkqU0')
 
 buttonForProfessional = types.InlineKeyboardMarkup()  # создаём кнопку
-button1 = types.InlineKeyboardButton("Фахівець", url='http://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
+button1 = types.InlineKeyboardButton("(Натисни тут) ← Фахівець", url='http://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
 buttonForProfessional.add(button1)  # добавляем кнопку
 
 buttonForPrice = types.InlineKeyboardMarkup()  # создаём кнопку
-button2 = types.InlineKeyboardButton("Переглянути ціни тут!", url='http://mmbti.com.ua/price/')  # добавляем текст кнопки и ссылку
+button2 = types.InlineKeyboardButton("(Натисни тут) ← Ціни", url='http://mmbti.com.ua/price/')  # добавляем текст кнопки и ссылку
 buttonForPrice.add(button2)  # добавляем кнопку
+
+buttonForSite = types.InlineKeyboardMarkup()  # создаём кнопку
+button3 = types.InlineKeyboardButton("(Натисни тут) ← Сайт", url='http://mmbti.com.ua/')  # добавляем текст кнопки и ссылку
+buttonForSite.add(button3)  # добавляем кнопку
 
 
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 service = types.KeyboardButton("Послуги")
 price = types.KeyboardButton("Ціни")
-site = types.KeyboardButton("Чат з фахівцем")
-markup.row(service, price, site)
+chatWithProff = types.KeyboardButton("Чат з фахівцем")
+markup.row(service, price, chatWithProff)
+
+
 adress = types.KeyboardButton('Адреси')
 contact = types.KeyboardButton('Контакти')
 sign = types.KeyboardButton('Залишити заявку')
 markup.row(sign, adress,contact)
 
 callProf = types.KeyboardButton('Дзвінок фахівцю')
-markup.row(callProf)
+ourSite = types.KeyboardButton('Наш сайт')
+markup.row(callProf, ourSite)
 
 
 
@@ -43,22 +50,24 @@ def text_message(message):
                                                                    f'Email: office@mmbti.com.ua\n'
                                                                    f'Головний інженер: +380512470781\n'
                                                                    f'Головний бухгалтер: +380512471506\n'
-                                                                   f'Відділ прийому громадян:+380512470967\n'
-                                                                   f'Стіл замовлень: +380512722132\n'
+                                                                   f'Відділ прийому гром.:+380512470967\n'
+                                                                   f'Стіл замовлень: +380512722132\n\n'
                                                                    f'Сайт: http://mmbti.com.ua/contact/\n\n ',reply_markup=markup)
 
     elif message.text == 'Послуги':bot.send_message(message.chat.id,f'- ТЕХНІЧНА ІНВЕНТАРИЗАЦІЯ НЕРУХОМОГО МАЙНА\n\n'
                                                                    f'- ОЦІНКА РУХОМОГО ТА НЕРУХОМОГО МАЙНА\n\n'
                                                                    f'- ТЕХНІЧНЕ ОБСТЕЖЕННЯ БУДІВЕЛЬ ТА СПОРУД\n\n'
-                                                                    f'Детальніше переходь на наш Сайт, за посиланням:\n\n http://mmbti.com.ua/\n\n',reply_markup=markup)
+                                                                    f'Детальніше переходь на наш Сайт, за посиланням: ↓↓↓↓\n\n http://mmbti.com.ua/\n\n',reply_markup=markup)
 
 
-    elif message.text == 'Ціни': bot.send_message(message.chat.id, "Ціни на послуги", reply_markup=buttonForPrice)
+    elif message.text == 'Ціни': bot.send_message(message.chat.id, "Ціни на послуги ↓↓↓↓", reply_markup=buttonForPrice)
 
 
-    elif message.text == 'Чат з фахівцем':bot.send_message(message.chat.id, "Розпочати діалог?", reply_markup=buttonForProfessional)
+    elif message.text == 'Чат з фахівцем':bot.send_message(message.chat.id, "Розпочати діалог? ↓↓↓↓", reply_markup=buttonForProfessional)
 
-    elif message.text == 'Дзвінок фахівцю':bot.send_message(message.chat.id, 'Тисніть на номер: +380981871050', parse_mode='Markdown', reply_markup=markup)
+    elif message.text == 'Дзвінок фахівцю':bot.send_message(message.chat.id, 'Тисніть на номер:→→→ +380981871050', parse_mode='Markdown', reply_markup=markup)
+
+    elif message.text == 'Наш сайт':bot.send_message(message.chat.id, 'Переходь на сайт ↓↓↓↓', parse_mode='Markdown', reply_markup=buttonForSite)
 
 
 
@@ -68,7 +77,7 @@ def text_message(message):
                 f"Місто Миколаїв, вулиця Шевченка, 40, 54000\n\n"
             f"Адреса підрозділу, що обслуговує об’єкти у Корабельному районі:\n\n"
             f"м. Миколаїв, проспект Богоявленський, 314\n\n"
-            f'Детальніше переходь на наш Сайт, за посиланням:\n\n http://mmbti.com.ua/adress/\n\n', reply_markup=markup)
+            f'Детальніше переходь на наш Сайт, за посиланням: ↓↓↓↓\n\n http://mmbti.com.ua/adress/\n\n', reply_markup=markup)
 
     elif (message.text == 'Привіт' or message.text == 'Добрий день' or message.text == 'Здравствуйте' or message.text == 'Добрый день' or message.text == 'Вітаю')  :bot.send_message(message.chat.id,
 
@@ -78,6 +87,8 @@ def text_message(message):
     elif message.text == 'Залишити заявку':
         bot.send_message(message.chat.id, 'Введіть будь-ласка ваше: Ім\'я, телефон і послугу, яка вас цікавить. Наш фахівець з вами зв\'яжеться', reply_markup=types.ReplyKeyboardRemove())
         bot.register_next_step_handler(message, forward)
+
+
     else: bot.send_message(message.chat.id,f'{message.from_user.first_name} ,я вас не розумію!Оберіть, будь-ласка послугу:',reply_markup=markup)
 
 
