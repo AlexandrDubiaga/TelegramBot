@@ -6,7 +6,7 @@ import webbrowser
 bot = telebot.TeleBot('7563020591:AAF2dRoBBgGtzOHLKvOYRbQd0bn5AcCkqU0')
 
 buttonForProfessional = types.InlineKeyboardMarkup()  # создаём кнопку
-button1 = types.InlineKeyboardButton("(Натисни тут) ← Фахівець", url='http://t.me/Forlemm/')  # добавляем текст кнопки и ссылку
+button1 = types.InlineKeyboardButton("(Натисни тут) ← Фахівець", url='http://t.me/OFFICE_MMBTI/')  # добавляем текст кнопки и ссылку
 buttonForProfessional.add(button1)  # добавляем кнопку
 
 buttonForPrice = types.InlineKeyboardMarkup()  # создаём кнопку
@@ -84,7 +84,7 @@ def text_message(message):
         f"Вітаємо вас!\n"
             f"Оберіть будь ласка, що вас цікавить\n", reply_markup=markup)
 
-    elif message.text == 'Залишити заявку':
+    elif message.text == 'Залишити заявк':
         bot.send_message(message.chat.id, 'Введіть будь-ласка ваше: Ім\'я, телефон і послугу, яка вас цікавить. Наш фахівець з вами зв\'яжеться', reply_markup=types.ReplyKeyboardRemove())
         bot.register_next_step_handler(message, forward)
 
