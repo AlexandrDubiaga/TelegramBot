@@ -19,20 +19,20 @@ buttonForSite.add(button3)  # добавляем кнопку
 
 
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-service = types.KeyboardButton("Послуги")
-price = types.KeyboardButton("Ціни")
+callProf = types.KeyboardButton('Дзвінок фахівцю')
 chatWithProff = types.KeyboardButton("Чат з фахівцем")
-markup.row(service, price, chatWithProff)
+markup.row( chatWithProff,callProf)
 
+
+service = types.KeyboardButton("Послуги")
+ourSite = types.KeyboardButton('Наш сайт')
+markup.row(service, ourSite)
 
 adress = types.KeyboardButton('Адреси')
 contact = types.KeyboardButton('Контакти')
-sign = types.KeyboardButton('Залишити заявку')
-markup.row(sign, adress,contact)
-
-callProf = types.KeyboardButton('Дзвінок фахівцю')
-ourSite = types.KeyboardButton('Наш сайт')
-markup.row(callProf, ourSite)
+price = types.KeyboardButton("Ціни")
+#sign = types.KeyboardButton('Залишити заявку')
+markup.row(price, adress,contact)
 
 
 
@@ -84,9 +84,9 @@ def text_message(message):
         f"Вітаємо вас!\n"
             f"Оберіть будь ласка, що вас цікавить\n", reply_markup=markup)
 
-    elif message.text == 'Залишити заявк':
-        bot.send_message(message.chat.id, 'Введіть будь-ласка ваше: Ім\'я, телефон і послугу, яка вас цікавить. Наш фахівець з вами зв\'яжеться', reply_markup=types.ReplyKeyboardRemove())
-        bot.register_next_step_handler(message, forward)
+    #elif message.text == 'Залишити заявку':
+     #   bot.send_message(message.chat.id, 'Введіть будь-ласка ваше: Ім\'я, телефон і послугу, яка вас цікавить. Наш фахівець з вами зв\'яжеться', reply_markup=types.ReplyKeyboardRemove())
+     #   bot.register_next_step_handler(message, forward)
 
 
     else: bot.send_message(message.chat.id,f'{message.from_user.first_name} ,я вас не розумію!Оберіть, будь-ласка послугу:',reply_markup=markup)
