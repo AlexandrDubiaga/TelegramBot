@@ -10,12 +10,28 @@ button1 = types.InlineKeyboardButton("(Натисни тут) ← Фахівец
 buttonForProfessional.add(button1)  # добавляем кнопку
 
 buttonForPrice = types.InlineKeyboardMarkup()  # создаём кнопку
-button2 = types.InlineKeyboardButton("(Натисни тут) ← Ціни", url='http://mmbti.com.ua/price/')  # добавляем текст кнопки и ссылку
+button2 = types.InlineKeyboardButton("(Натисни тут) ← Ціни", url='http://mmbti.com.ua/price/#prices')  # добавляем текст кнопки и ссылку
 buttonForPrice.add(button2)  # добавляем кнопку
 
 buttonForSite = types.InlineKeyboardMarkup()  # создаём кнопку
 button3 = types.InlineKeyboardButton("(Натисни тут) ← Сайт", url='http://mmbti.com.ua/')  # добавляем текст кнопки и ссылку
 buttonForSite.add(button3)  # добавляем кнопку
+
+buttonForPosluga = types.InlineKeyboardMarkup()  # создаём кнопку
+button4 = types.InlineKeyboardButton("(Натисни тут) ← Послуги", url='http://mmbti.com.ua/works/#works')  # добавляем текст кнопки и ссылку
+buttonForPosluga.add(button4)  # добавляем кнопку
+
+buttonForMaps = types.InlineKeyboardMarkup()  # создаём кнопку
+button5 = types.InlineKeyboardButton("(Натисни тут) ← Карта", url='http://mmbti.com.ua/#main-map')  # добавляем текст кнопки и ссылку
+buttonForMaps.add(button5)  # добавляем кнопку
+
+buttonForAddress = types.InlineKeyboardMarkup()  # создаём кнопку
+button6 = types.InlineKeyboardButton("(Натисни тут) ← Адреси", url='http://mmbti.com.ua/adress/#adress')  # добавляем текст кнопки и ссылку
+buttonForAddress.add(button6)  # добавляем кнопку
+
+
+
+
 
 
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -26,7 +42,8 @@ markup.row( chatWithProff,callProf)
 
 service = types.KeyboardButton("Послуги")
 ourSite = types.KeyboardButton('Наш сайт')
-markup.row(service, ourSite)
+ourMapGromad = types.KeyboardButton('Карта громад')
+markup.row(service, ourSite, ourMapGromad)
 
 adress = types.KeyboardButton('Адреси')
 contact = types.KeyboardButton('Контакти')
@@ -51,13 +68,12 @@ def text_message(message):
                                                                    f'Головний інженер: +380512470781\n'
                                                                    f'Головний бухгалтер: +380512471506\n'
                                                                    f'Відділ прийому гром.:+380512470967\n'
-                                                                   f'Стіл замовлень: +380512722132\n\n'
-                                                                   f'Сайт: http://mmbti.com.ua/contact/\n\n ',reply_markup=markup)
+                                                                   f'Стіл замовлень: +380512722132\n\n',reply_markup=markup)
 
-    elif message.text == 'Послуги':bot.send_message(message.chat.id,f'- ТЕХНІЧНА ІНВЕНТАРИЗАЦІЯ НЕРУХОМОГО МАЙНА\n\n'
-                                                                   f'- ОЦІНКА РУХОМОГО ТА НЕРУХОМОГО МАЙНА\n\n'
-                                                                   f'- ТЕХНІЧНЕ ОБСТЕЖЕННЯ БУДІВЕЛЬ ТА СПОРУД\n\n'
-                                                                    f'Детальніше переходь на наш Сайт, за посиланням: ↓↓↓↓\n\n http://mmbti.com.ua/\n\n',reply_markup=markup)
+    elif message.text == 'Послуги':bot.send_message(message.chat.id,"Наші послуги ↓↓↓↓",reply_markup=buttonForPosluga)
+
+    elif message.text == 'Карта громад':
+        bot.send_message(message.chat.id, "Карта громад ↓↓↓↓", reply_markup=buttonForMaps)
 
 
     elif message.text == 'Ціни': bot.send_message(message.chat.id, "Ціни на послуги ↓↓↓↓", reply_markup=buttonForPrice)
@@ -73,11 +89,7 @@ def text_message(message):
 
     elif message.text == 'Адреси':bot.send_message(message.chat.id,
 
-            f"Адреса КП \"ММБТІ\":\n\n" 
-                f"Місто Миколаїв, вулиця Шевченка, 40, 54000\n\n"
-            f"Адреса підрозділу, що обслуговує об’єкти у Корабельному районі:\n\n"
-            f"м. Миколаїв, проспект Богоявленський, 314\n\n"
-            f'Детальніше переходь на наш Сайт, за посиланням: ↓↓↓↓\n\n http://mmbti.com.ua/adress/\n\n', reply_markup=markup)
+            'Наші адреси ↓↓↓↓', reply_markup=buttonForAddress)
 
     elif (message.text == 'Привіт' or message.text == 'Добрий день' or message.text == 'Здравствуйте' or message.text == 'Добрый день' or message.text == 'Вітаю')  :bot.send_message(message.chat.id,
 
