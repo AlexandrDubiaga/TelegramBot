@@ -2,7 +2,6 @@ import telebot
 from telebot import types
 
 
-bot = telebot.TeleBot('7563020591:AAF2dRoBBgGtzOHLKvOYRbQd0bn5AcCkqU0')
 
 
 #Чат з  фахівцем
