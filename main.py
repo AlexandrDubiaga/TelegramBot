@@ -50,11 +50,48 @@ def start(message):
             except Exception as e:
                 print(f"⚠️ Помилка надсилання адміну: {e}")
 
+
     bot.send_message(
         message.chat.id,
         f'Вас вітає, КП "ММБТІ". {user_name}, оберіть, що вас цікавить:',
         reply_markup=main_menu
     )
+
+@bot.message_handler(commands=['chat'])
+def handle_chat(message):
+    send_chat_link(message)
+
+@bot.message_handler(commands=['call'])
+def handle_call(message):
+    send_call_info(message)
+
+@bot.message_handler(commands=['email'])
+def handle_email(message):
+    send_email_link(message)
+
+@bot.message_handler(commands=['services'])
+def handle_services(message):
+    send_services_link(message)
+
+@bot.message_handler(commands=['website'])
+def handle_website(message):
+    send_website_link(message)
+
+@bot.message_handler(commands=['map'])
+def handle_map(message):
+    send_map_link(message)
+
+@bot.message_handler(commands=['prices'])
+def handle_prices(message):
+    send_price_link(message)
+
+@bot.message_handler(commands=['addresses'])
+def handle_addresses(message):
+    send_address_link(message)
+
+@bot.message_handler(commands=['contacts'])
+def handle_contacts(message):
+    send_contact_info(message)
 
 
 @bot.message_handler(func=lambda message: message.text == 'Чат з фахівцем')
@@ -154,9 +191,10 @@ def unknown_message(message):
     )
 
 
+
+
+
 # Запуск бота
 bot.remove_webhook()
 bot.polling(none_stop=True)
-
-
 
