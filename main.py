@@ -102,6 +102,8 @@ def send_chat_link(message):
     bot.send_message(message.chat.id, "Розпочати діалог:", reply_markup=markup)
 
 
+
+
 @bot.message_handler(func=lambda message: message.text == 'Дзвінок фахівцю')
 def send_call_info(message):
     bot.send_message(
@@ -173,7 +175,8 @@ def send_contact_info(message):
     bot.send_message(message.chat.id, contact_text, parse_mode="HTML")
 
 
-@bot.message_handler(func=lambda message: message.text in ['Привіт', 'Добрий день', 'Здравствуйте', 'Добрый день', 'Вітаю'])
+@bot.message_handler(func=lambda message: message.text in ['Привіт', 'привіт', 'привет', 'Привет', 'Добрий день', 'добрий день',
+                                                           'Здравствуйте', 'здравствуйте', 'драсьте', 'Добрый день', 'Вітаю', 'вітаю вас'])
 def greet_user(message):
     bot.send_message(
         message.chat.id,
